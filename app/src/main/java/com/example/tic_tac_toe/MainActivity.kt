@@ -14,9 +14,34 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.tic_tac_toe.ui.theme.TictactoeTheme
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var game: GameController
+    private lateinit var statusTextView: TextView
+    private lateinit var buttons: Array<Array<Button>>
+
+    @SuppressLint("DiscouragedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
+        statusTextView = findViewById(R.id.statusTextView)
+        val playAgainButton: Button = findViewById(R.id.playAgainButton)
+
+        game = GameController()
+
+        buttons = Array(3) { Array(3) { Button(this) } }
+
+        for (i in 0..2) {
+            for (j in 0..2) {
+                val buttonId = resources.getIdentifier("button_${i}_${j}",
+                    "id", packageName)
+                buttons[i][j] = findViewById(buttonId)
+                buttons[i][j].setOnClickListener { onCellClicked(i, j) }
+            }
+        }
+
+        // Initial UI update
+        updateUI()
     }
 
     private fun onCellClicked(row: Int, col: Int) {
