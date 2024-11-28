@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/statusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:text="Player X's Turn" />
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="3"
+        android:columnCount="3">
+
+        <Button
+            android:id="@+id/button_0_0"
+            style="@style/CellButton"/>
+        <Button
+            android:id="@+id/button_0_1"
+            style="@style/CellButton"/>
+        <Button
+            android:id="@+id/button_0_2"
+            style="@style/CellButton"/>
+
+        <Button
+            android:id="@+id/button_1_0"
+            style="@style/CellButton"/>
+        <Button
+            android:id="@+id/button_1_1"
+            style="@style/CellButton"/>
+        <Button
+            android:id="@+id/button_1_2"
+            style="@style/CellButton"/>
+
+        <Button
+            android:id="@+id/button_2_0"
+            style="@style/CellButton"/>
+        <Button
+            android:id="@+id/button_2_1"
+            style="@style/CellButton"/>
+        <Button
+            android:id="@+id/button_2_2"
+            style="@style/CellButton"/>
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/playAgainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play Again"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>
