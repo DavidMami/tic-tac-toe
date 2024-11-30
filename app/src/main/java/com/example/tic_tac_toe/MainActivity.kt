@@ -67,9 +67,28 @@ class MainActivity : ComponentActivity() {
                 buttons[i][j].isEnabled = game.getCell(i, j) == null
             }
         }
-        if (game.checkWinner() == null) {
-            statusTextView.text =
-                "Player ${if (game.currentPlayer == GameController.Player.X) "X" else "O"}'s Turn"
+
+        when {
+            game.checkWinner() != null -> {
+                val winner = if (game.checkWinner() == GameController.Player.X) "X" else "O"
+                statusTextView.text = "Player $winner Wins!"
+                disableAllButtons()
+            }
+            game.isTie() -> {
+                statusTextView.text = "It's a Tie!"
+                disableAllButtons()
+            }
+            else -> {
+                statusTextView.text = "Player ${if (game.currentPlayer == GameController.Player.X) "X" else "O"}'s Turn"
+            }
+        }
+    }
+
+    private fun disableAllButtons() {
+        for (i in 0..2) {
+            for (j in 0..2) {
+                buttons[i][j].isEnabled = false
+            }
         }
     }
 

@@ -47,6 +47,11 @@ class GameController {
         return null
     }
 
+    fun isTie(): Boolean {
+        return board.all { row -> row.all { it != null } } && checkWinner() == null
+    }
+
+
     fun resetGame() {
         for (i in 0..2) {
             for (j in 0..2) {
